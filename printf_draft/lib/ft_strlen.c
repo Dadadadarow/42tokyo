@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 17:52:59 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/09 00:09:50 by dainoue          ###   ########.fr       */
+/*   Created: 2021/11/09 00:23:48 by dainoue           #+#    #+#             */
+/*   Updated: 2021/11/09 00:23:51 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "../lib/libft.h"
-
-typedef struct	s_flags
+size_t	ft_strlen(const char *s)
 {
-	int flag[5];
-	int width;
-	int accuracy;
-	int modifier;
-	int specifier;
-	int size;
-}				t_flags;
+	size_t	cnt;
 
-int ft_printf(const char *fmt, ...);
-void proc_per(const char **start, const char **fmt, int *size, va_list *ap);
-
-# endif
+	cnt = 0;
+	while (s[cnt])
+		cnt++;
+	return (cnt);
+}

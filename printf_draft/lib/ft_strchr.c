@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 17:52:59 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/09 00:09:50 by dainoue          ###   ########.fr       */
+/*   Created: 2021/11/08 23:47:14 by dainoue           #+#    #+#             */
+/*   Updated: 2021/11/09 00:34:35 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "../lib/libft.h"
-
-typedef struct	s_flags
+int ft_strchr(char *dst, const char fmt)
 {
-	int flag[5];
-	int width;
-	int accuracy;
-	int modifier;
-	int specifier;
-	int size;
-}				t_flags;
+	size_t	len;
+	int		i;
 
-int ft_printf(const char *fmt, ...);
-void proc_per(const char **start, const char **fmt, int *size, va_list *ap);
+	i = 0;
+	len = ft_strlen(dst);
+	while (i < len)
+	{
+		if (dst[i] == fmt)
+			return (i);
+		i += 1;
+	}
+	return (-1);
+}
+// int main(void)
+// {
+// 	char fmt;
+// 	int ret;
 
-# endif
+// 	fmt = '%';
+// 	ret = ft_strchr("diuxXcsp%", fmt);
+// 	printf("%d\n", ret);
+// 	return (0);
+// }

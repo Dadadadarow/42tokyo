@@ -1,1 +1,1 @@
-# 42tokyo
+# 42cursus
