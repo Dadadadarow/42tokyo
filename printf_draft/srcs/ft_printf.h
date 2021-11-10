@@ -6,7 +6,7 @@
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 17:52:59 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/09 00:09:50 by dainoue          ###   ########.fr       */
+/*   Updated: 2021/11/09 01:14:08 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct	s_flags
 	int accuracy;
 	int modifier;
 	int specifier;
-	int size;
+	int putnum;
+	int putlen;
 }				t_flags;
 
 int ft_printf(const char *fmt, ...);

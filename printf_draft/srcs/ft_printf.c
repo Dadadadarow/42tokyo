@@ -6,7 +6,7 @@
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:59:25 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/09 00:22:41 by dainoue          ###   ########.fr       */
+/*   Updated: 2021/11/09 01:17:42 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void ft_init_flags(t_flags *f, int size)
 	// f->width = -1;
 	// f->accuracy = -1;
 	// f->modifier = -1;
+	if (size < 0)
+		f->putnum = 0;
+	else
+		f->putnum = size;
+	f->putlen = 0;
 	f->specifier = -1;
 }
 
