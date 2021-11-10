@@ -6,7 +6,7 @@
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:59:25 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/09 01:17:42 by dainoue          ###   ########.fr       */
+/*   Updated: 2021/11/10 20:01:40 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int ft_printf(const char *fmt, ...)
 		if (*start != '%')
 			ft_print_str(&start, &fmt, &size);
 		else
-			return (0);
 			ft_proc_per(&start, &fmt, &size, &ap);	
 	}
 	va_end(ap);
