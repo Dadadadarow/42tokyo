@@ -2,6 +2,7 @@
 
 int main(void)
 {
-	write(1, "%%", 1);
+	int a = printf("%p\n", "aaa");
+	printf("%r\n", 1);
 	return (0);
 }

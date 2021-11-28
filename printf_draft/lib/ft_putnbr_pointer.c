@@ -1,67 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_uint.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 23:57:42 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/28 00:54:00 by dainoue          ###   ########.fr       */
+/*   Updated: 2021/11/28 00:53:16 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	getlen_uint(long n, int sys)
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+static long	getlen_pointer(unsigned long long n)
 {
 	long	len;
 
 	len = 1;
-	while (n / sys)
+	
+	while (n / 16)
 	{
 		len++;
-		n /= sys;
+		n /= 16;
 	}
 	return (len);
 }
 
-void putans_uint(long n)
-{
-	if (n / 10)
-		putans_uint(n / 10);
-	ft_putchar('0' + n % 10);
-	return ;
-}
-
-void putans_hex(long n, int flag)
+void putans_pointer(unsigned long long n)
 {
 	if (n / 16)
-		putans_hex(n / 16, flag);
+		putans_pointer(n / 16);
 	if (n % 16 <= 9)
 		ft_putchar('0' + n % 16);
 	else
-		if (flag == 0)
-			ft_putchar('a' + n % 16 - 10);
-		else
-			ft_putchar('A' + n % 16 - 10);
+	{
+		ft_putchar('a' + n % 16 - 10);
+	}
+	return ;
 }
 
-// 0:u 1:x 2:X
-
-int ft_putnbr_uint(unsigned int n, int flag)
+int ft_putnbr_pointer(unsigned long long n)
 {
-	long	len;
+	long len;
 
-	n = (long)n;
-	if (flag == 0)
-	{
-		len = getlen_uint(n, 10);
-		putans_uint(n);
-	}
-	else
-	{
-		len = getlen_uint(n, 16);
-		putans_hex(n, flag - 1);
-	}
-	return (len);
+	write(1, "0x", 2);
+	len = getlen_pointer(n);
+	putans_pointer(n);
+	return (len + 2);
 }

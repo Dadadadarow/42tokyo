@@ -6,13 +6,13 @@
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:59:25 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/10 20:01:40 by dainoue          ###   ########.fr       */
+/*   Updated: 2021/11/28 01:11:52 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_init_flags(t_flags *f, int size)
+void ft_init_flags(t_flags *f)
 {
 	// Bonus Part
 	// f->flag[0] = 0;
@@ -23,11 +23,12 @@ void ft_init_flags(t_flags *f, int size)
 	// f->width = -1;
 	// f->accuracy = -1;
 	// f->modifier = -1;
-	if (size < 0)
-		f->putnum = 0;
-	else
-		f->putnum = size;
-	f->putlen = 0;
+	// if (size < 0)
+	// 	f->putnum = 0;
+	// else
+	// 	f->putnum = size;
+	// f->putlen = 0;
+	f->putsize = 0;
 	f->specifier = -1;
 }
 
@@ -36,8 +37,9 @@ void ft_proc_per(const char **start, const char **fmt, int *size, va_list *ap)
 	int		num;
 	t_flags	flags;
 
+	num = 0;
 	(*fmt)++;
-	ft_init_flags(&flags, *size);
+	ft_init_flags(&flags);
 	// Bonus Part
 	// while (ft_strchr_n("#0- +", **fmt) >= 0)
 	// {
@@ -63,6 +65,7 @@ void ft_print_str(const char **start, const char **fmt, int *size)
 	while (**fmt != '%' && *fmt)
 		(*fmt)++;
 	write(1, *start, *fmt-*start);
+	// printf("%s\n", *start);
 	*size += *fmt - *start;
 }
 
@@ -80,16 +83,18 @@ int ft_printf(const char *fmt, ...)
 	{
 		start = fmt;
 		if (*start != '%')
+		{
+			write(1, "a called\n", 9);
 			ft_print_str(&start, &fmt, &size);
+		}
 		else
-			ft_proc_per(&start, &fmt, &size, &ap);	
+		{
+			write(1, "b called\n", 9);
+			ft_proc_per(&start, &fmt, &size, &ap);
+		}
+		// write(1, "\n>>>>\n", 6);
+		// printf("size is %d\n", size);
 	}
 	va_end(ap);
 	return (size);
-}
-
-int main(void)
-{
-	ft_printf("This is test. %", 1);
-	return (0);
 }

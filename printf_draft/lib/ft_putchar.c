@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 23:47:14 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/27 11:50:06 by dainoue          ###   ########.fr       */
+/*   Created: 2021/11/25 21:05:57 by dainoue           #+#    #+#             */
+/*   Updated: 2021/11/25 21:06:18 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strchr(char *dst, const char fmt)
+void ft_putchar(char c)
 {
-	size_t	len;
-	size_t		i;
-
-	i = 0;
-	if (fmt == 0)
-		return (-1);
-	len = ft_strlen(dst);
-	while (i < len)
-	{
-		if (dst[i] == fmt)
-			return (i);
-		i += 1;
-	}
-	return (-1);
+	write(1, &c, 1);
 }

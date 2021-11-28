@@ -6,18 +6,13 @@
 /*   By: dainoue <dainoue@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 23:57:42 by dainoue           #+#    #+#             */
-/*   Updated: 2021/11/10 21:05:57 by dainoue          ###   ########.fr       */
+/*   Updated: 2021/11/28 00:52:15 by dainoue          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-static long	getlen(long n)
+static long	getlen_int(long n)
 {
 	long	flag;
 	long	len;
@@ -53,17 +48,17 @@ static long	getlen(long n)
 // 	}
 // }
 
-void putans(long n)
+void putans_int(long n)
 {
 	if (n < 0)
 	{
 		write(1, "-", 1);
-		putans(-n);
+		putans_int(-n);
 	}
 	else
 	{
 		if (n / 10)
-			putans(n / 10);
+			putans_int(n / 10);
 		ft_putchar('0' + n % 10);
 		return ;
 	}
@@ -74,14 +69,14 @@ int ft_putnbr_int(int n)
 	long	len;
 
 	n = (long)n;
-	len = getlen(n);
-	putans(n);
+	len = getlen_int(n);
+	putans_int(n);
 	return (len);
 }
 
-int main(void)
-{
-	// int len = ft_putnbr_int(-1003994);
-	printf("putnum is %");
-	return (0);
-}
+// int main(void)
+// {
+// 	// int len = ft_putnbr_int(-1003994);
+// 	printf("putnum is %");
+// 	return (0);
+// }
